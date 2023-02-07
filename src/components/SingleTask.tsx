@@ -1,25 +1,38 @@
 import React from 'react';
-import {Task} from "../model";
+import {Task} from "../models/Task";
 import { BiTrash, BiEdit, BiCheck } from "react-icons/bi";
 
 interface Props {
     task: Task;
-    tasks: Task[];
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+    handleDone: (id:number) => void;
+    handleDelete: (id:number) => void;
 }
 
-const SingleTask = ({task, tasks, setTasks}: Props) => {
+const SingleTask = ({task, handleDone, handleDelete}: Props) => {
     return (
-        <div className="task-item" key={task.id}>
+        <div className="task-item">
             <span>
                 <h2>{task.title}</h2>
                 <p>{task.description}</p>
             </span>
-            <div className="action-container">
-                <BiCheck className="finish-icon icon" size={18}/>
-                <BiEdit className="edit-icon icon" size={18}/>
-                <BiTrash className="delete-icon icon" size={18}/>
-            </div>
+            { !task.isDone &&
+                <div className="action-container">
+                    <BiCheck
+                        className="finish-icon icon"
+                        size={18}
+                        onClick={() => handleDone(task.id)}
+                    />
+                    <BiEdit
+                        className="edit-icon icon"
+                        size={18}
+                    />
+                    <BiTrash
+                        className="delete-icon icon"
+                        size={18}
+                        onClick={() => handleDelete(task.id)}
+                    />
+                </div>
+            }
         </div>
     );
 };

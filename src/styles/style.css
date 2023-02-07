@@ -53,6 +53,7 @@ label {
 .main-container {
   padding: 20px 40px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
 }
@@ -60,6 +61,7 @@ label {
 .button-container {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 .button-container button {
   padding: 10px;
@@ -93,6 +95,13 @@ label {
   flex: 30;
 }
 
+.list-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .task-item {
   background-color: rgba(117, 128, 184, 0.3137254902);
   color: #BFC7D5;
@@ -102,7 +111,7 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .action-container {
