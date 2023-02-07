@@ -41,6 +41,10 @@ input:focus, textarea:focus {
   outline: 1px solid #FB503B;
 }
 
+textarea {
+  min-height: 100px;
+}
+
 label {
   display: flex;
   flex-direction: column;
@@ -68,11 +72,11 @@ label {
 }
 .button-container button:hover {
   background-color: rgba(251, 80, 59, 0.5215686275);
-  color: #D7D7DC;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
 
 .container {
-  padding: 1rem;
+  padding: 20px;
   border-radius: 10px;
   background-color: #12141C;
   transition: flex 0.3s;
@@ -95,10 +99,31 @@ label {
   padding: 20px;
   width: 100%;
   border-radius: 10px;
-  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.action-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.icon {
+  border-radius: 10px;
+  background-color: #FB503B;
+  height: 30px;
+  width: 30px;
+  padding: 2px;
+  color: black;
+  cursor: pointer;
+}
+.icon:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  background-color: rgba(251, 80, 59, 0.5215686275);
 }
 
 /*# sourceMappingURL=style.css.map */

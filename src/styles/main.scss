@@ -46,6 +46,8 @@ input, textarea {
   }
 }
 
+textarea { min-height:100px }
+
 label {
   display:flex;
   flex-direction:column;
@@ -70,16 +72,15 @@ label {
     cursor:pointer;
     font-weight:600;
     width:100px;
-
     &:hover {
       background-color:$button-hover-color;
-      color:$text-color;
+      box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
     }
   }
 }
 
 .container {
-  padding:1rem;
+  padding:20px;
   border-radius:10px;
   background-color:$bg-accent;
   transition:flex 0.3s;
@@ -88,7 +89,7 @@ label {
   gap:10px;
 }
 
-.list-container { flex:65 }
+.list-container {flex:65 }
 .form-container { flex:30 }
 
 .task-item {
@@ -97,8 +98,29 @@ label {
   padding:20px;
   width:100%;
   border-radius:10px;
-  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.action-container {
   display:flex;
   flex-direction:column;
-  gap:10px;
+  justify-content:space-around;
+  gap:5px;
+}
+
+.icon {
+  border-radius:10px;
+  background-color:$button-color;
+  height:30px;
+  width:30px;
+  padding:2px;
+  color:black;
+  cursor:pointer;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    background-color:$button-hover-color;
+  }
 }

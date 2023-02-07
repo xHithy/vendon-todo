@@ -1,31 +1,23 @@
 import React from "react";
+import { Task } from "../model";
+import SingleTask from "./SingleTask";
 
-const List: React.FC = () => {
+interface Props {
+    tasks: Task[];
+    setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+}
+
+const List = ({tasks, setTasks}: Props) => {
     return (
         <div className="list-container container">
             <h1>Task list</h1>
-            <div className="task-item">
-                <text>
-                    <h2>Task number one</h2>
-                    <p>This is a detailed description for task number one.</p>
-                </text>
-                <div className="button-container">
-                    <button>Complete</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-            </div>
-            <div className="task-item">
-                <text>
-                    <h2>Task number one</h2>
-                    <p>This is a detailed description for task number one.</p>
-                </text>
-                <div className="button-container">
-                    <button>Complete</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-            </div>
+            {tasks.map(task => (
+                <SingleTask
+                    task={task}
+                    tasks={tasks}
+                    setTasks={setTasks}
+                />
+            ))}
         </div>
     );
 }
