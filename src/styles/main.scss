@@ -1,0 +1,104 @@
+@import url(https://fonts.bunny.net/css?family=albert-sans:300,400,600,700);
+@import 'variables';
+@import 'Form';
+@import 'List';
+
+* {
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family:$font;
+  color:$text-color;
+  background-color:$bg-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-weight:800;
+  font-size:2.5rem;
+  color:$header-color;
+}
+
+h2 {
+  font-weight:700;
+}
+
+p {
+  font-weight:300;
+  font-size:1rem;
+}
+
+input, textarea {
+  font-family:$font;
+  padding:10px;
+  border-radius:10px;
+  border:0;
+  background-color:$task-bg-color;
+  resize:vertical;
+  color:$task-text-color;
+
+  &:focus {
+    outline:1px solid $button-color;
+  }
+}
+
+label {
+  display:flex;
+  flex-direction:column;
+}
+
+.main-container {
+  padding:20px 40px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.button-container {
+  display:flex;
+  justify-content:space-between;
+
+  button {
+    padding:10px;
+    background-color:$button-color;
+    border:0;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    width:100px;
+
+    &:hover {
+      background-color:$button-hover-color;
+      color:$text-color;
+    }
+  }
+}
+
+.container {
+  padding:1rem;
+  border-radius:10px;
+  background-color:$bg-accent;
+  transition:flex 0.3s;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.list-container { flex:65 }
+.form-container { flex:30 }
+
+.task-item {
+  background-color:$task-bg-color;
+  color:$task-text-color;
+  padding:20px;
+  width:100%;
+  border-radius:10px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
