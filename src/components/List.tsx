@@ -1,38 +1,29 @@
 import React from "react";
-import { Task } from "../models/Task";
+import { TaskModel } from "../models/TaskModel";
 import SingleTask from "./SingleTask";
 import { BiPlus } from "react-icons/bi";
 
 interface Props {
-    tasks: Task[];
-    setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-    setFormAction: React.Dispatch<React.SetStateAction<boolean>>;
+    tasks: TaskModel[];
+    handleTaskDone: (id:number) => void;
+    handleTaskEdit: (id:number) => void;
+    handleTaskDelete: (id:number) => void;
 }
 
-const List = ({tasks, setTasks, setFormAction}: Props) => {
-    const handleDone = (id:number) => {
-        setTasks(tasks.map((task) =>
-            task.id === id ? {...task,isDone:true} : task
-        ));
-    }
-    const handleDelete = (id:number) => {
-        setTasks(tasks.filter(task => task.id !== id));
-    }
-    const handleFormAction = () => {
-        setFormAction(true);
-    }
-
+const List = ({tasks, handleTaskDone, handleTaskEdit, handleTaskDelete}: Props) => {
     return (
         <div className="list-container container">
             <div className="list-title">
                 <h1>Task list</h1>
-                <BiPlus className="icon" onClick={() => handleFormAction()}/>
+                <BiPlus className="icon"/>
             </div>
             {tasks.map(task => (
-                <SingleTask key={task.id}
+                <SingleTask
+                    key={task.id}
                     task={task}
-                    handleDone={handleDone}
-                    handleDelete={handleDelete}
+                    handleDone={handleTaskDone}
+                    handleStartEdit={handleTaskEdit}
+                    handleDelete={handleTaskDelete}
                 />
             ))}
         </div>

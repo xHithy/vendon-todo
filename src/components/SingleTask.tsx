@@ -1,14 +1,15 @@
 import React from 'react';
-import {Task} from "../models/Task";
+import { TaskModel } from "../models/TaskModel";
 import { BiTrash, BiEdit, BiCheck } from "react-icons/bi";
 
 interface Props {
-    task: Task;
+    task: TaskModel;
     handleDone: (id:number) => void;
     handleDelete: (id:number) => void;
+    handleStartEdit: (id:number) => void;
 }
 
-const SingleTask = ({task, handleDone, handleDelete}: Props) => {
+const SingleTask = ({task, handleDone, handleDelete, handleStartEdit}: Props) => {
     return (
         <div className="task-item">
             <span>
@@ -25,6 +26,7 @@ const SingleTask = ({task, handleDone, handleDelete}: Props) => {
                     <BiEdit
                         className="edit-icon icon"
                         size={18}
+                        onClick={() => handleStartEdit(task.id)}
                     />
                     <BiTrash
                         className="delete-icon icon"
