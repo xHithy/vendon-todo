@@ -9,12 +9,11 @@ interface Props {
     description: string;
     setDescription: React.Dispatch<React.SetStateAction<string>>;
     form: FormModel;
-    valid: boolean;
-    setValid: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Form = ({handleFormAdd, handleFormCancel, title, setTitle, description, setDescription, form, valid, setValid}: Props) => {
+const Form = ({handleFormAdd, handleFormCancel, title, setTitle, description, setDescription, form}: Props) => {
     const [error, setError] = useState<string>("");
+    const [valid, setValid] = useState<boolean>(false);
     useEffect(() => {
         if(title.trim().length < 10) {
             setValid(false);

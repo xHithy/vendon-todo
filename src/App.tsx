@@ -11,7 +11,6 @@ const App: React.FC = () => {
     const [description, setDescription] = useState<string>("");
     const [tasks, setTasks] = useState<TaskModel[]>([]);
     const [form, setForm] = useState<FormModel>({method:"hidden", task:null});
-    const [valid, setValid] = useState<boolean>(false);
 
     const handleFormAdd = (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,6 +71,7 @@ const App: React.FC = () => {
                 handleTaskDone={handleTaskDone}
                 handleTaskEdit={handleTaskEdit}
                 handleTaskAdd={handleTaskAdd}
+                form={form}
             />
             <Form
                 handleFormAdd={handleFormAdd}
@@ -81,8 +81,6 @@ const App: React.FC = () => {
                 description={description}
                 setDescription={setDescription}
                 form={form}
-                valid={valid}
-                setValid={setValid}
             />
         </div>
     );

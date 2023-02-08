@@ -2,6 +2,7 @@ import React from "react";
 import { TaskModel } from "../models/TaskModel";
 import SingleTask from "./SingleTask";
 import { BiPlus } from "react-icons/bi";
+import {FormModel} from "../models/FormModel";
 
 interface Props {
     tasks: TaskModel[];
@@ -9,9 +10,10 @@ interface Props {
     handleTaskEdit: (id:number) => void;
     handleTaskDelete: (id:number) => void;
     handleTaskAdd: () => void;
+    form: FormModel;
 }
 
-const List = ({tasks, handleTaskDone, handleTaskEdit, handleTaskDelete, handleTaskAdd}: Props) => {
+const List = ({tasks, handleTaskDone, handleTaskEdit, handleTaskDelete, handleTaskAdd, form}: Props) => {
     return (
         <div className="list-container container">
             <div className="list-title">
@@ -25,6 +27,7 @@ const List = ({tasks, handleTaskDone, handleTaskEdit, handleTaskDelete, handleTa
                     handleTaskDone={handleTaskDone}
                     handleTaskEdit={handleTaskEdit}
                     handleTaskDelete={handleTaskDelete}
+                    form={form}
                 />
             ))}
         </div>
