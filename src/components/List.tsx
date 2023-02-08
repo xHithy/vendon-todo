@@ -1,8 +1,7 @@
 import React from "react";
 import { TaskModel } from "../models/TaskModel";
 import SingleTask from "./SingleTask";
-import { BiPlus } from "react-icons/bi";
-import {FormModel} from "../models/FormModel";
+import { FormModel } from "../models/FormModel";
 
 interface Props {
     tasks: TaskModel[];
@@ -18,7 +17,9 @@ const List = ({tasks, handleTaskDone, handleTaskEdit, handleTaskDelete, handleTa
         <div className="list-container container">
             <div className="list-title">
                 <h1>Task list</h1>
-                <BiPlus className="icon" onClick={() => handleTaskAdd()}/>
+                { form.method === "hidden" &&
+                    <button onClick={() => handleTaskAdd()}>Add task</button>
+                }
             </div>
             {tasks.map(task => (
                 <SingleTask

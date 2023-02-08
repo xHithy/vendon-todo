@@ -50,6 +50,20 @@ label {
   flex-direction: column;
 }
 
+button {
+  padding: 10px;
+  background-color: #FB503B;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100px;
+}
+button:hover {
+  background-color: rgba(251, 80, 59, 0.5215686275);
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
 .main-container {
   padding: 20px 40px;
   display: flex;
@@ -62,19 +76,6 @@ label {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-}
-.button-container button {
-  padding: 10px;
-  background-color: #FB503B;
-  border: 0;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  width: 100px;
-}
-.button-container button:hover {
-  background-color: rgba(251, 80, 59, 0.5215686275);
-  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 }
 
 .container {

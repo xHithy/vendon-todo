@@ -1,7 +1,7 @@
 import React from 'react';
 import { TaskModel } from "../models/TaskModel";
 import { BiTrash, BiEdit, BiCheck } from "react-icons/bi";
-import {FormModel} from "../models/FormModel";
+import { FormModel } from "../models/FormModel";
 
 interface Props {
     task: TaskModel;
