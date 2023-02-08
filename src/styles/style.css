@@ -3,14 +3,14 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: "Albert Sans", sans-serif;
   color: #D7D7DC;
   background-color: #181A25;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -93,6 +93,12 @@ label {
 
 .form-container {
   flex: 30;
+}
+
+.error-field {
+  color: #FB503B;
+  font-weight: 400;
+  font-size: 0.7rem;
 }
 
 .list-title {

@@ -4,12 +4,12 @@ import { BiTrash, BiEdit, BiCheck } from "react-icons/bi";
 
 interface Props {
     task: TaskModel;
-    handleDone: (id:number) => void;
-    handleDelete: (id:number) => void;
-    handleStartEdit: (id:number) => void;
+    handleTaskDone: (id:number) => void;
+    handleTaskDelete: (id:number) => void;
+    handleTaskEdit: (id:number) => void;
 }
 
-const SingleTask = ({task, handleDone, handleDelete, handleStartEdit}: Props) => {
+const SingleTask = ({task, handleTaskDone, handleTaskDelete, handleTaskEdit}: Props) => {
     return (
         <div className="task-item">
             <span>
@@ -21,17 +21,17 @@ const SingleTask = ({task, handleDone, handleDelete, handleStartEdit}: Props) =>
                     <BiCheck
                         className="finish-icon icon"
                         size={18}
-                        onClick={() => handleDone(task.id)}
+                        onClick={() => handleTaskDone(task.id)}
                     />
                     <BiEdit
                         className="edit-icon icon"
                         size={18}
-                        onClick={() => handleStartEdit(task.id)}
+                        onClick={() => handleTaskEdit(task.id)}
                     />
                     <BiTrash
                         className="delete-icon icon"
                         size={18}
-                        onClick={() => handleDelete(task.id)}
+                        onClick={() => handleTaskDelete(task.id)}
                     />
                 </div>
             }
