@@ -1,18 +1,17 @@
 @import url(https://fonts.bunny.net/css?family=albert-sans:300,400,600,700);
 @import 'variables';
-@import 'Form';
-@import 'List';
+@import 'bootstrap';
 
 * {
   padding:0;
   margin:0;
   box-sizing:border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-family:$font;
 }
 
 body {
-  font-family:$font;
   color:$text-color;
   background-color:$bg-color;
 }
@@ -23,35 +22,21 @@ h1 {
   color:$header-color;
 }
 
-h2 {
-  font-weight:700;
-}
+h2 { font-weight:700 }
 
-p {
-  font-weight:300;
-  font-size:1rem;
-}
+p { font-weight:300 }
 
 input, textarea {
-  font-family:$font;
   padding:10px;
   border-radius:10px;
   border:0;
   background-color:$task-bg-color;
   resize:vertical;
   color:$task-text-color;
-
-  &:focus {
-    outline:1px solid $button-color;
-  }
+  &:focus { outline:1px solid $button-color }
 }
 
 textarea { min-height:100px }
-
-label {
-  display:flex;
-  flex-direction:column;
-}
 
 button {
   padding:10px;
@@ -67,33 +52,17 @@ button {
   }
 }
 
-.main-container {
-  padding:20px 40px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  gap:20px;
-}
+.main-container { padding:20px 40px }
 
-.button-container {
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.container {
-  padding:20px;
-  border-radius:10px;
-  background-color:$bg-accent;
-  transition:flex 0.3s;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.list-container { flex:65 }
+.list-container { flex:65}
 
 .form-container { flex:30 }
+
+.container {
+  background-color:$bg-accent;
+  transition:flex 0.3s;
+  gap:10px;
+}
 
 .error-field {
   color:$button-color;
@@ -101,42 +70,25 @@ button {
   font-size:0.7rem;
 }
 
-.list-title {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
 .task-item {
   background-color:$task-bg-color;
   color:$task-text-color;
-  padding:20px;
   width:100%;
-  border-radius:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
 }
 
 .action-container {
-  display:flex;
-  flex-direction:column;
   justify-content:space-around;
   gap:5px;
 }
 
 .icon {
-  border-radius:10px;
   background-color:$button-color;
   height:30px;
   width:30px;
   padding:2px;
   color:black;
-  cursor:pointer;
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    box-shadow:rgba(0, 0, 0, 0.24) 0 3px 8px;
     background-color:$button-hover-color;
   }
 }
