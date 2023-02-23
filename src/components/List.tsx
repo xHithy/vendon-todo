@@ -21,6 +21,9 @@ const List = ({
     handleTaskAdd,
     form
 }: Props) => {
+    // Sort entire tasks array by deadline time
+    tasks = tasks.sort((a, b) => new Date(a.deadline).getTime() - new Date(b.deadline).getTime());
+
     return (
         <div className='list-container container flex br-10 col p-20'>
             <div className='list-title flex gap-20 jc-sb ai-c'>

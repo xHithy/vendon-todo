@@ -24,9 +24,14 @@ h1 {
 
 h2 { font-weight:700 }
 
-p {
-  font-weight:500;
+sup {
+  padding:3px;
+  font-size:0.7rem;
 }
+
+p { font-weight:400 }
+
+b { font-weight:800 }
 
 input, textarea {
   padding:10px;
@@ -66,13 +71,29 @@ button {
 
 .form-container { flex:30 }
 
+.red-text {
+  color:$button-color;
+  sup {
+    color:$button-color;
+    background-color:$button-hover-color;
+  }
+}
+
+.green-text {
+  color:$finished-color;
+  sup {
+    color:$finished-color;
+    background-color:$finished-hover-color;
+  }
+}
+
 .container {
   background-color:$bg-accent;
   transition:flex 0.3s;
   gap:10px;
 }
 
-.error-field {
+.error-field, .alert {
   color:$button-color;
   font-weight:400;
   font-size:0.7rem;
@@ -90,7 +111,7 @@ button {
 }
 
 .time {
-  padding-top:10px;
+  padding-top:20px;
   color:#808080;
   font-size:0.7rem;
   font-weight:100;

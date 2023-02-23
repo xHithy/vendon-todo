@@ -3,6 +3,8 @@ import { TaskModel } from '../models/TaskModel';
 import { BiTrash, BiEdit, BiCheck } from 'react-icons/bi';
 import { FormModel } from '../models/FormModel';
 import { FORM_METHOD_VALUES } from '../values/FormValues';
+import { TimeExceeded } from '../functions/timeExceeded';
+import { CheckExpired} from "../functions/checkExpired";
 
 interface Props {
     task: TaskModel;
@@ -19,12 +21,37 @@ const SingleTask = ({
     handleTaskEdit,
     form
 }: Props) => {
+    const expired = CheckExpired(task.deadline);
+    const exceededBy = TimeExceeded(new Date(task.deadline), new Date())
+
     return (
         <div className='task-item flex br-10 gap-20 p-20 jc-sb ai-c'>
             <div>
-                <h2>{task.title}</h2>
-                <p>{task.description}</p>
-                <p className='time'><b>Deadline:</b> {task.deadline.replace('T', ' at ')}</p>
+                { !expired && !task.isDone &&
+                    <>
+                        <h2>{task.title}</h2>
+                        <p>{task.description}</p>
+                        <p className='time'>Deadline: {task.deadline.replace('T', ' ')}</p>
+                    </>
+                }
+
+                { expired && !task.isDone &&
+                    <>
+                        <h2 className='red-text'>{task.title} <sup>DELAYED</sup></h2>
+                        <p>{task.description}</p>
+                        <p className='time alert'>
+                            Deadline exceeded by { exceededBy['days'] } days : { exceededBy['hours'] } hours : { exceededBy['minutes'] } minutes : { exceededBy['seconds'] } seconds
+                        </p>
+                    </>
+                }
+
+                { task.isDone &&
+                    <>
+                        <h2 className='green-text'>{task.title} <sup>FINISHED</sup></h2>
+                        <p>{task.description}</p>
+                        <p className='time'>Deadline: {task.deadline.replace('T', ' ')}</p>
+                    </>
+                }
             </div>
             { !task.isDone && form.method === FORM_METHOD_VALUES.HIDDEN &&
                 <div className='action-container flex col'>
