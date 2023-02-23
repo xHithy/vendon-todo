@@ -10,6 +10,8 @@ interface Props {
     description: string;
     setDescription: React.Dispatch<React.SetStateAction<string>>;
     form: FormModel;
+    deadline: string;
+    setDeadline: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const Form = ({
@@ -19,7 +21,9 @@ const Form = ({
     setTitle,
     description,
     setDescription,
-    form
+    form,
+    deadline,
+    setDeadline
 }: Props) => {
     const [error, setError] = useState<string>('');
     const [valid, setValid] = useState<boolean>(false);
@@ -43,6 +47,12 @@ const Form = ({
                         placeholder='Enter a title for the task'
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <input
+                        type='datetime-local'
+                        value={deadline}
+                        onChange={(e) => setDeadline(e.target.value)}
+                        required
                     />
                     <textarea
                         placeholder='Enter a description for the task'

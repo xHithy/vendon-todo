@@ -10,6 +10,7 @@ const App: React.FC = () => {
     const [id, setID] = useState<number>(1);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
+    const [deadline, setDeadline] = useState<string>('');
     const [tasks, setTasks] = useState<TaskModel[]>([]);
     const [form, setForm] = useState<FormModel>({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
 
@@ -17,10 +18,11 @@ const App: React.FC = () => {
         e.preventDefault();
         // Add task functionality
         if (title && description && form.method === FORM_METHOD_VALUES.ADD) {
-            setTasks([...tasks, { id, title, description, isDone:false }]);
+            setTasks([...tasks, { id, title, description, deadline, isDone:false }]);
             setID(id + 1);
             setTitle('');
             setDescription('');
+            setDeadline('');
             setForm({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
         }
 
@@ -30,8 +32,9 @@ const App: React.FC = () => {
             setForm({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
             setTitle('');
             setDescription('');
+            setDeadline('');
             setTasks(tasks.map((task) =>
-                task.id === taskID ? { ...task, title:title, description:description } : task
+                task.id === taskID ? { ...task, title:title, description:description, deadline:deadline } : task
             ));
         }
     }
@@ -40,6 +43,7 @@ const App: React.FC = () => {
         e.preventDefault();
         setTitle('');
         setDescription('');
+        setDeadline('');
         setForm({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
     }
 
@@ -55,6 +59,7 @@ const App: React.FC = () => {
                 setForm({ method:FORM_METHOD_VALUES.EDIT, task:task });
                 setTitle(task.title);
                 setDescription(task.description);
+                setDeadline(task.deadline);
             }
         });
     }
@@ -81,6 +86,8 @@ const App: React.FC = () => {
                 description={description}
                 setDescription={setDescription}
                 form={form}
+                deadline={deadline}
+                setDeadline={setDeadline}
             />
         </div>
     );

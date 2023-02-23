@@ -24,19 +24,27 @@ h1 {
 
 h2 { font-weight:700 }
 
-p { font-weight:300 }
+p {
+  font-weight:500;
+}
 
 input, textarea {
   padding:10px;
   border-radius:10px;
   border:0;
   background-color:$task-bg-color;
-  resize:vertical;
   color:$task-text-color;
   &:focus { outline:1px solid $button-color }
 }
 
-textarea { min-height:100px }
+input[type='datetime-local'] {
+  color:gray;
+}
+
+textarea {
+  min-height:100px;
+  resize:vertical;
+}
 
 button {
   padding:10px;
@@ -79,6 +87,13 @@ button {
 .action-container {
   justify-content:space-around;
   gap:5px;
+}
+
+.time {
+  padding-top:10px;
+  color:#808080;
+  font-size:0.7rem;
+  font-weight:100;
 }
 
 .icon {

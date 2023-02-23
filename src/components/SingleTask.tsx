@@ -24,6 +24,7 @@ const SingleTask = ({
             <div>
                 <h2>{task.title}</h2>
                 <p>{task.description}</p>
+                <p className='time'><b>Deadline:</b> {task.deadline.replace('T', ' at ')}</p>
             </div>
             { !task.isDone && form.method === FORM_METHOD_VALUES.HIDDEN &&
                 <div className='action-container flex col'>
