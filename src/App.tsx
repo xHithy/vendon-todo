@@ -23,6 +23,7 @@ const App: React.FC = () => {
 
     const handleFormAdd = (e: React.FormEvent) => {
         e.preventDefault();
+
         // Add task functionality
         if (title && description && form.method === FORM_METHOD_VALUES.ADD) {
             setTasks([...tasks, { id, title, description, deadline, isDone:false, expired:CheckExpired(deadline) }]);

@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleTask from "./SingleTask";
-import {TaskModel} from "../models/TaskModel";
-import {FormModel} from "../models/FormModel";
+import { TaskModel } from "../models/TaskModel";
+import { FormModel } from "../models/FormModel";
 
 interface Props {
     tasks: TaskModel[];
@@ -21,7 +21,7 @@ const FinishedTasks = ({
 }: Props) => {
     return (
         <>
-            {tasks.map(task => (
+            { tasks.map(task => (
                 <>
                     { task.isDone &&
                         <SingleTask
@@ -34,7 +34,7 @@ const FinishedTasks = ({
                         />
                     }
                 </>
-            ))}
+            )) }
         </>
     );
 };

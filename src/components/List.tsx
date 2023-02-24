@@ -2,9 +2,9 @@ import React from 'react';
 import { TaskModel } from '../models/TaskModel';
 import { FormModel } from '../models/FormModel';
 import { FORM_METHOD_VALUES } from '../values/FormValues';
-import FinishedTasks from "./FinishedTasks";
-import ActiveTasks from "./ActiveTasks";
-import DelayedTasks from "./DelayedTasks";
+import FinishedTasks from './FinishedTasks';
+import ActiveTasks from './ActiveTasks';
+import DelayedTasks from './DelayedTasks';
 
 interface Props {
     tasks: TaskModel[];
