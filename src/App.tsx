@@ -5,6 +5,7 @@ import './styles/main.scss';
 import { TaskModel } from './models/TaskModel';
 import { FormModel } from './models/FormModel';
 import { FORM_METHOD_VALUES} from './values/FormValues';
+import {CheckExpired} from "./functions/checkExpired";
 
 const App: React.FC = () => {
     const [id, setID] = useState<number>(1);
@@ -14,11 +15,17 @@ const App: React.FC = () => {
     const [tasks, setTasks] = useState<TaskModel[]>([]);
     const [form, setForm] = useState<FormModel>({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
 
+    useEffect(() => {
+        setTasks(tasks.map((task) =>
+            CheckExpired(task.deadline) ?  { ...task, expired:true } : task
+        ));
+    }, [tasks, setTasks]);
+
     const handleFormAdd = (e: React.FormEvent) => {
         e.preventDefault();
         // Add task functionality
         if (title && description && form.method === FORM_METHOD_VALUES.ADD) {
-            setTasks([...tasks, { id, title, description, deadline, isDone:false }]);
+            setTasks([...tasks, { id, title, description, deadline, isDone:false, expired:CheckExpired(deadline) }]);
             setID(id + 1);
             setTitle('');
             setDescription('');
@@ -34,7 +41,7 @@ const App: React.FC = () => {
             setDescription('');
             setDeadline('');
             setTasks(tasks.map((task) =>
-                task.id === taskID ? { ...task, title:title, description:description, deadline:deadline } : task
+                task.id === taskID ? { ...task, title:title, description:description, deadline:deadline, active:CheckExpired(deadline) } : task
             ));
         }
     }
@@ -49,7 +56,7 @@ const App: React.FC = () => {
 
     const handleTaskDone = (id:number) => {
         setTasks(tasks.map((task) =>
-            task.id === id ? { ...task, isDone:true } : task
+            task.id === id ? { ...task, isDone:true, expired:false } : task
         ));
     }
 
