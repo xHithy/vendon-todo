@@ -5,7 +5,7 @@ import './styles/main.scss';
 import { TaskModel } from './models/TaskModel';
 import { FormModel } from './models/FormModel';
 import { FORM_METHOD_VALUES} from './values/FormValues';
-import {CheckExpired} from "./functions/checkExpired";
+import { CheckExpired } from "./functions/checkExpired";
 
 const App: React.FC = () => {
     const [id, setID] = useState<number>(1);
@@ -36,13 +36,13 @@ const App: React.FC = () => {
         // Edit task functionality
         if (title && description && form.method === FORM_METHOD_VALUES.EDIT && form.task?.id) {
             let taskID = form.task.id;
+            setTasks(tasks.map((task) =>
+                task.id === taskID ? { ...task, title:title, description:description, deadline:deadline, expired:CheckExpired(deadline) } : task
+            ));
             setForm({ method:FORM_METHOD_VALUES.HIDDEN, task:null });
             setTitle('');
             setDescription('');
             setDeadline('');
-            setTasks(tasks.map((task) =>
-                task.id === taskID ? { ...task, title:title, description:description, deadline:deadline, active:CheckExpired(deadline) } : task
-            ));
         }
     }
 
