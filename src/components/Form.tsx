@@ -57,8 +57,9 @@ const Form = ({
                     <textarea
                         placeholder='Enter a description for the task'
                         onChange={(e) => setDescription(e.target.value)}
+                        value={description}
                         required
-                    >{description}</textarea>
+                    ></textarea>
                     { !valid &&
                         <span className='error-field'>{error}</span>
                     }

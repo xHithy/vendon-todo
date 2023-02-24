@@ -1,8 +1,10 @@
 import React from 'react';
 import { TaskModel } from '../models/TaskModel';
-import SingleTask from './SingleTask';
 import { FormModel } from '../models/FormModel';
 import { FORM_METHOD_VALUES } from '../values/FormValues';
+import FinishedTasks from "./FinishedTasks";
+import ActiveTasks from "./ActiveTasks";
+import DelayedTasks from "./DelayedTasks";
 
 interface Props {
     tasks: TaskModel[];
@@ -21,7 +23,6 @@ const List = ({
     handleTaskAdd,
     form
 }: Props) => {
-    // Sort entire tasks array by deadline time
     tasks = tasks.sort((a, b) => new Date(a.deadline).getTime() - new Date(b.deadline).getTime());
 
     return (
@@ -32,16 +33,30 @@ const List = ({
                     <button onClick={() => handleTaskAdd()}>Add task</button>
                 }
             </div>
-            { tasks.map(task => (
-                <SingleTask
-                    key={task.id}
-                    task={task}
-                    handleTaskDone={handleTaskDone}
-                    handleTaskEdit={handleTaskEdit}
-                    handleTaskDelete={handleTaskDelete}
-                    form={form}
-                />
-            ))}
+            <DelayedTasks
+                tasks={tasks}
+                handleTaskDone={handleTaskDone}
+                handleTaskEdit={handleTaskEdit}
+                handleTaskDelete={handleTaskDelete}
+                handleTaskAdd={handleTaskAdd}
+                form={form}
+            />
+            <ActiveTasks
+                tasks={tasks}
+                handleTaskDone={handleTaskDone}
+                handleTaskEdit={handleTaskEdit}
+                handleTaskDelete={handleTaskDelete}
+                handleTaskAdd={handleTaskAdd}
+                form={form}
+            />
+            <FinishedTasks
+                tasks={tasks}
+                handleTaskDone={handleTaskDone}
+                handleTaskEdit={handleTaskEdit}
+                handleTaskDelete={handleTaskDelete}
+                handleTaskAdd={handleTaskAdd}
+                form={form}
+            />
         </div>
     );
 }
